@@ -16,14 +16,15 @@ See: https://cloud.ibm.com/devops/getting-started
 
 1. Lab0, Setup and Pre-requisites, see [Lab0](Lab0/README.md),
 2. Lab1, Create a Toolchain to Deploy a Kubernetes App, see [Lab1](Lab1/README.md),
-3. Lab2, Develop a Kubernetes App with Helm, TBD
-4. Lab3, Create a Custom Toolchain, TBD
-5. Lab4, Source-to-Image (S2I),
-6. Lab
+
 
 ## TODOs
 
-* Add remaining Kubernetes resources to deployment script in Lab1,
-* Lab2, Create a Toolchain - Deploy a Kubernetes App with Helm,
-* Lab4, Adding Tools: Vulnerability Advisor
+* Improve Toolchain Template, 
+  * Add other Kubernetes resources to deployment script in Lab1,
+  * Allow for ignoring Issues so one can use any public repo, even if you don't own it,
+3. Lab2, Develop a Kubernetes App with Helm, TBD
+4. Lab3, Create a Custom Toolchain, TBD
+5. Lab4, Source-to-Image (S2I),
+6. Lab5, Using Jenkins to Kubernetes
 
