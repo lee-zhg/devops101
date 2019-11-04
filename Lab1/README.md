@@ -33,8 +33,9 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
         * Github Server: `https://github.com`,
         * Repository Type: `Existing`,
         * Source repository URL: `https://github.com/<username>/guestbook` forked from the IBM guestbook at `https://github.com/IBM/guestbook`, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
-        * Check `Enable GitHub Issues`,
-        * Check `Track deployment of code changes`,
+        * If you choose the IBM repo instead of the fork:
+          * Uncheck `Enable GitHub Issues`,
+          * Uncheck `Track deployment of code changes`, 
     * Click `Create` button,
     * You will be taken to the next step: the Delivery Pipeline,
 
@@ -49,16 +50,20 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
                 * Or go to `Manage` > `Access (IAM)` > `IBM Cloud API Keys` to create a new IBM Cloud API Key,
                 * copy-paste the API Key,
                 * Click the Create button to confirm,
-                * This should trigger the validation of the API Key, and if validated, should autoload the values for `Container registry region`, `Container registry namespace`,
-                * Or if no namespace for the container registry exists, enter the default suggested name, `guestbook-ns-<timestamp>` as the namespace, 
-                    * This `Container registry namespace` must be unique for us.icr.io, you can use the timestamp,
-                * Default for `Cluster region`, `Resource Group`, `Cluster name` or if more than one select the correct cluster, and `guestbook-ns-<username>-<timestamp>` for `Cluster namespace`,
+                * This should trigger the validation of the API Key, and if validated, should autoload values for `Container registry region`, `Container registry namespace`,
+                * Change the 'Container registry namespace' to the generated name for the 'App name' in the same page, but remove enough numbers from the timestamp to validate the name,
+                    * This `Container registry namespace` must be unique for us.icr.io, you can also use the timestamp from above,
+                * Change the following settings to match your region, resource group, and IKS Cluster Name settings that were assigned to you:
+                  * `Cluster region`, e.g. wdc04 or dal10 (check) 
+                  * `Resource Group`, e.g. 'workshop-nov2019'
+                  * `Cluster name` make sure to select the correct cluster, 
+                  * Set `guestbook-ns` for `Cluster namespace`,
     * Click the `Create` button,
 
 		![DevOps Create CD](../images/devops_create_cd.png)
 
     * The Toolchain is being configured,
-    * When the Toolchain has successfully been configured, you will see the Tools in the Toolchain: THINK, CODE, DELIVER, and Eclipse Orion Web IDE,
+    * When the Toolchain has successfully been configured, you will see the Tools in the Toolchain: THINK (if you selected Issues Management), CODE, DELIVER, and Eclipse Orion Web IDE,
     * Click the top right drop down of the `kube-toolchain-123456...` and select `Rename`,
     * Rename the toolchain name to `toolchain-kube-guestbook-<timestamp>`,
     * In the DELIVER tool window, click the top right dropdown and select `Configure`,
@@ -72,15 +77,13 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
 		![DevOps Toolchain Overview](../images/devops_toolchain_overview.png)
 
 4. Review and Debug the Toolchain Configuration,
-    * The `THINK` window should link to your Issues manager,
     * The `CODE` window should link to your source code repository,
     * The `Eclipse Orion Web IDE` should link to an online Eclipse code editor,
     * Click the `DELIVER` window to review the `Delivery Pipeline`,
         * The `Delivery Pipeline` page will load,
 
-			![DevOps Toolchain Default](../images/devops_toolchain_default.png)
-
-        * Click the `BUILD` stage,
+		* If you selected to integrate the Github Issues on a new Github repository, the build event will trigger automatically,
+        * For the original Github repository of existing code without Github Issues, click the play icon in the `BUILD` stage to kick off the build,
             * The initial `BUILD` stage passes,
             * In the `JOBS` section, click the `View logs and history` link,
             * The `BUILD` stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)
@@ -123,3 +126,18 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
         
 5. Check your Kubernetes cluster, in the `guestbook-ns` namespace, you should see your deployment running, 
 
+6. Login to IBM Cloud
+
+	```console
+	$ ibmcloud login -u $IBM_USERID -p $IBM_PASSWORD -r $REGION -g $IBM_RG -c $ACCOUNTID
+	$ ibmcloud target --cf-api $IBM_CFAPI
+	```
+
+7. Connect to your cluster
+
+	```console
+	$ ibmcloud ks cluster config --cluster $CLUSTER_NAME
+	$ export KUBECONFIG="/root/.bluemix/plugins/container-service/clusters/${CLUSTER_NAME}/kube-config-${ZONE}-${CLUSTER_NAME}.yml"
+	$ kubectl config current-context
+	$ kubectl get namespaces
+	```

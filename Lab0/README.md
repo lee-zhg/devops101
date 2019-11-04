@@ -65,3 +65,9 @@ Make sure you have set the following environment variables, as defined in the se
 	```console
 	$ ibmcloud target --cf
 	```
+
+# Create a Fork in Github of the Guestbook App
+
+* Go to https://github.com/IBM/guestbook
+* Create a Fork to your personal Github account
+* You will need the link to this personal fork in the Labs
