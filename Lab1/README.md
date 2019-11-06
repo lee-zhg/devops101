@@ -33,7 +33,7 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
         * Github Server: `https://github.com`,
         * Repository Type: `Existing`,
         * Source repository URL: here you can choose to use the IBM repo `https://github.com/IBM/guestbook` or a fork of the IBM repo to your personal account, i.e. `https://github.com/<username>/guestbook`. If you use the fork you will have admin access and this lets you use the Issues support. If you use the public IBM repo you cannot use Issues support in your toolchain. 
-	* If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
+        * If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
         * If you choose the public IBM repo instead:
           * Uncheck `Enable GitHub Issues`,
           * Uncheck `Track deployment of code changes`, 
