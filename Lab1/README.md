@@ -25,15 +25,16 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
     * Toolchain Name: `toolchain-kube-guestbook-<timestamp>`
         * Use the existing appended timestamp of the generated name,
     * Select Region: <default>, 
-      * If you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
+      * Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
     * Select a resource group: `Default`
     * Select a source provider: `Github`,
         * This will reload the page with a Github configuration section,
         * If asked for Authorization, `Authorize` the toolchain,
         * Github Server: `https://github.com`,
         * Repository Type: `Existing`,
-        * Source repository URL: `https://github.com/<username>/guestbook` forked from the IBM guestbook at `https://github.com/IBM/guestbook`, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
-        * If you choose the IBM repo instead of the fork:
+        * Source repository URL: here you can choose to use the IBM repo `https://github.com/IBM/guestbook` or a fork of the IBM repo to your personal account, i.e. `https://github.com/<username>/guestbook`. If you use the fork you will have admin access and this lets you use the Issues support. If you use the public IBM repo you cannot use Issues support in your toolchain. 
+	* If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
+        * If you choose the public IBM repo instead:
           * Uncheck `Enable GitHub Issues`,
           * Uncheck `Track deployment of code changes`, 
     * Click `Create` button,
