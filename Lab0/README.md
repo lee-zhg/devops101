@@ -1,5 +1,6 @@
 # Lab0 - Setup
 
+Complete the steps below to setup the lab environment.
 
 ## Access the IBM Cloud via CLI
 
@@ -27,5 +28,6 @@ Optionally, fork the Guestbook App in Github.
 
 1. Go to https://github.com/IBM/guestbook in the same browser.
 
-* Create a Fork to your personal Github account
-* You will need the link to this personal fork in the Labs
+1. Fork the repo by clicking on the `Fork` button at the top-right of your screen.
+
+1. Make a note of your new Git repo link. You may use the link to your personal fork in the Lab.s
