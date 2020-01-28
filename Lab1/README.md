@@ -127,7 +127,7 @@ You run and debug the `Toolchain` in the section.
 
 6. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
-7. The `CONTAINERIZE` stage failed. It's the next stage after `BUILD`.
+7. Notice that the `CONTAINERIZE` stage failed. It's the next stage after `BUILD`.
 
     ![DevOps Create Delivery Pipeline](../images/containerize-failed.png)
 
@@ -135,11 +135,11 @@ You run and debug the `Toolchain` in the section.
 
 9. Review the build logs, and note that the `Dockerfile` was not found.
 
-> Note: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
+> Error Message: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
 
 10. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
-11. Within the `CONTAINERIZE` tile, from the settings drop down, select the `Configure Stage`.
+11. Within the `CONTAINERIZE` tile, from the `settings` drop down, select the `Configure Stage`.
 
 12. In the `Jobs` tab, note there are 4 jobs belonging to the stage, each job corresponds to a step in the `Build logs`.
 
@@ -164,33 +164,72 @@ You run and debug the `Toolchain` in the section.
 
 17. Click `Save`.
 
-18. 
+18. Manually start the `CONTAINERIZE` stage again by clicking the `Play` icon. The `Check dockerfile` job in the `CONTAINERIZE` stage should pass now.
 
-            * Manually trigger the `CONTAINERIZE` stage again by clicking the `Play` icon,
-            * The `Check dockerfile` job in the `CONTAINERIZE` stage should pass now,
-            * If any of the next jobs fails, review the `View logs and history` link, and select the failed job, to debug,
-            * Go to https://cloud.ibm.com/kubernetes/clusters, go to `Registry` and `Images`,
-            * You should see now that your `guestbook` image added to your registry under the namespace you defined earlier, e.g. `guestbook-ns-<username>-<timestamp>`,
-        
-        * Review the `DEPLOY` stage,
-            * You should see that the stage passed successfully,
-            * If the stage failed, review the `View logs and history` link to debug the stage,
-            * Your deployment to Kubernetes of the deployment resource should succeed and the health check should pass successfully,
-        
-## Check your Kubernetes cluster, in the `guestbook-ns` namespace, you should see your deployment running, 
+19. If any of the jobs failed, review and debug the problem by selecting the `View logs and history` link and select the failed job.
 
-## Login to IBM Cloud
+20. It can take a few minutes for the `CONTAINERIZE` stage to complete.
+
+    ![DevOps Containerize Succeed](../images/containerize-succeed.png)
+
+21. After the `CONTAINERIZE` stage to completes, navigate to IKS dashboard https://cloud.ibm.com/kubernetes/clusters in a different browser tab.
+
+22.  Select the `Registry` tab on the left.
+
+23. Click the `Images`.
+
+    ![IKS dashboard 01](../images/iks-dashboard01.png)
+
+24. You should see that your `guestbook` image added to your registry under the namespace you defined earlier.
+        
+25. Return to the `pipeline-kube-guestbook-XXXXXX`.
+
+26. Review the `DEPLOY` stage, you should see that the stage passed successfully.
+
+    ![DevOps Deploy Succeed](../images/deploy-succeed.png)
+
+> Note: If the stage failed, review the `View logs and history` link to debug the stage.
+
+27. Navigate to IKS dashboard https://cloud.ibm.com/kubernetes/clusters in a new browser tab.
+
+28. Select your Kubernetes cluster this time.
+
+29. Click the `Kubernetes dashboard` button on the top.
+
+30. Your deployment to Kubernetes of the deployment resource should succeed and the health check should pass successfully.
+
+    ![K8s dashboard 01](../images/k8s-dashboard.png)
+
+
+## Connect to your cluster via CLI
+
+You cab also verify successful deployment of CI/CD pipeline via Kubernetes CLI.
+
+1. Go to your web terminal.
+
+2. Verify that you are connecting to your Kubernetes cluster.
 
 	```console
-	$ ibmcloud login -u $IBM_USERID -p $IBM_PASSWORD -r $REGION -g $IBM_RG -c $ACCOUNTID
-	$ ibmcloud target --cf-api $IBM_CFAPI
-	```
-
-## Connect to your cluster
-
-	```console
-	$ ibmcloud ks cluster config --cluster $CLUSTER_NAME
-	$ export KUBECONFIG="/root/.bluemix/plugins/container-service/clusters/${CLUSTER_NAME}/kube-config-${ZONE}-${CLUSTER_NAME}.yml"
 	$ kubectl config current-context
-	$ kubectl get namespaces
-	```
+    ```
+
+3. 	Verify that your Kubernetes pods are in `running` state.
+
+	```console
+	$ kubectl get pods
+
+    NAME                                               READY   STATUS    RESTARTS   AGE
+    kube-toolchain-20200128200158483-ff9c8d864-rncw6   1/1     Running   0          29m
+    ```
+
+4. Verify that your deployment are successful.
+
+	```console
+	$ kubectl get deployments
+
+	NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+    kube-toolchain-20200128200158483   1/1     1            1           24m
+    ```
+
+
+    
