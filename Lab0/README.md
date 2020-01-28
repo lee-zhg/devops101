@@ -1,4 +1,4 @@
-# Toolchain Lab 0 - Setup
+# DevOps Lab 0 - Setup
 
 Complete the steps below to setup the lab environment.
 
