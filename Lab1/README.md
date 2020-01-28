@@ -59,7 +59,7 @@ To configure your `Toolchain`   ,
 9. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
 
 
-## Configure the `Delivery Pipeline`:
+## Configure the `Delivery Pipeline`
 
 It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
 
@@ -101,7 +101,7 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 
     ![DevOps Done Create CD](../images/devops_done_created_toolchain.png)
 
-13. In the `DELIVER` tile, click the top right dropdown(3 vertical dots) and select `Configure`. This bring you to the `Delivery Pipeline` window.
+13. Within the `DELIVER` tile, click the top-right dropdown(3 vertical dots) and select `Configure`. This bring you to the `Delivery Pipeline` window.
 
 	![DevOps Create Delivery Pipeline](../images/devops_create_delivery_pipeline.png)
 
@@ -110,42 +110,59 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 15. Click `Save Integration`. This bring you back to the `Overview` page.
 
 
-## Review and Debug the Toolchain Configuration,
-    * The `CODE` window should link to your source code repository,
-    * The `Eclipse Orion Web IDE` should link to an online Eclipse code editor,
-    * Click the `DELIVER` window to review the `Delivery Pipeline`,
-        * The `Delivery Pipeline` page will load,
+## Review and Debug the Toolchain
 
-		* If you selected to integrate the Github Issues on a new Github repository, the build event will trigger automatically,
-        * For the original Github repository of existing code without Github Issues, click the play icon in the `BUILD` stage to kick off the build,
-            * The initial `BUILD` stage passes,
-            * In the `JOBS` section, click the `View logs and history` link,
-            * The `BUILD` stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)
-            * Return to the `guestbook-delivery-pipeline`,
+You review and debug the `Toolchain` in the section.
 
-        * The `CONTAINERIZE` stage failed,
-            * In the `JOBS` section, click the `View logs and history` link,
-            * Review the build logs, and note that the `Dockerfile` was not found,
-            * Also in the build logs, note the environment variables that were configured
+1. The `CODE` tile links to your source code repository.
 
-                ```
-                DOCKER_ROOT=.
-				DOCKER_FILE=Dockerfile
-				build.properties:
-				GIT_URL=https://github.com/<username>/guestbook.git
-				GIT_BRANCH=master
-				GIT_COMMIT=5246a420041424130f32d292cca7fc7a99aa0b93
-				SOURCE_BUILD_NUMBER=1
-                ```
+2. The `Eclipse Orion Web IDE` tile links to an online Eclipse code editor.
 
-            * The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path,
-            * Go back to the `Delivery Pipeline` page, in the `CONTAINERIZE` window, from the settings drop down, click the `Configure Stage` icon,
-            * In the `Jobs` tab, note there are 4 jobs belonging to the stage, each job corresponds to a step in the `Build logs`,
-            * Review the `Check dockerfile` job. Note that this is essentially a Bash script that runs the script located at `https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/check_dockerfile.sh`,
-            * If you review the bash script, it sets the `DOCKER_ROOT` environment variable to the current directory if not set, and this is the reason that our Dockerfile is not found, 
-            * Go to the `Environment properties` tab of the `CONTAINERIZE` stage, 
-            * Change the `DOCKER_ROOT` property from `.` to `./v2/guestbook`,
-            * Click `SAVE`
+3. Click the `DELIVER` window to review the `Delivery Pipeline`.
+
+4. Click the `play` icon within the `BUILD` tile to kick off the build process. You can observe the building progress within the `BUILD` tile. Detail information is available in the `JOBS` section.  
+
+5. Click the `View logs and history` link of the `JOBS` section to view detail information.
+    * The `BUILD` stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)
+
+6. Return to the `pipeline-kube-guestbook`.
+
+7. The `CONTAINERIZE` stage failed. It's the next stage after `BUILD`.
+
+8. Click the `View logs and history` link in the `JOBS` section.
+
+9. Review the build logs, and note that the `Dockerfile` was not found.
+
+> Note: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
+
+10. Return to the `pipeline-kube-guestbook`.
+
+11. Within the `CONTAINERIZE` tile, from the settings drop down, select the `Configure Stage`.
+
+12. In the `Jobs` tab, note there are 4 jobs belonging to the stage, each job corresponds to a step in the `Build logs`.
+
+    ![DevOps Create Delivery Pipeline](../images/configure-containerize01.png)
+
+13. Review the `Check dockerfile` job. This is essentially a Bash job that runs the script located at `https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/check_dockerfile.sh`.
+
+14. If you review the bash script, it sets the `DOCKER_ROOT` environment variable to the current directory when it's not set. This is the reason that our Dockerfile is not found.
+
+    ```
+    echo "=========================================================="
+    echo "Checking for Dockerfile at the repository root"
+    if [ -z "${DOCKER_ROOT}" ]; then DOCKER_ROOT=. ; fi
+    if [ -z "${DOCKER_FILE}" ]; then DOCKER_FILE=Dockerfile ; fi
+    ```
+
+15. Move to the `Environment properties` tab of the `CONTAINERIZE` stage.
+
+16. Change the `DOCKER_ROOT` variable from `.` to `./v2/guestbook`.
+
+    ![DevOps Create Delivery Pipeline](../images/configure-containerize02.png)
+
+17. Click `Save`.
+
+18. 
 
             * Manually trigger the `CONTAINERIZE` stage again by clicking the `Play` icon,
             * The `Check dockerfile` job in the `CONTAINERIZE` stage should pass now,
