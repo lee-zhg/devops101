@@ -2,7 +2,10 @@
 
 In this lab, you are going to create a toolchain and automate the deployment of a sample application to Kubernetes cluster in IBM Cloud.
 
+
 ## Create a Toolchain
+
+To complete a `Toolchain` in IBM Cloud environment,
 
 1. Login to your IBM Cloud account at https://cloud.ibm.com
 
@@ -21,62 +24,91 @@ In this lab, you are going to create a toolchain and automate the deployment of 
     ![DevOps Created Toolchain](../images/devops_created_toolchain.png)
 
 
-## Configure the Toolchain, preserve the unique timestamp part where possible, and configure for:
+## Configure the Toolchain
 
-    * Toolchain Name: `toolchain-kube-guestbook-<timestamp>`
-        * Use the existing appended timestamp of the generated name,
-    * Select Region: <default>, 
-      * Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
-    * Select a resource group: `Default`
-    * Select a source provider: `Github`,
-        * This will reload the page with a Github configuration section,
-        * If asked for Authorization, `Authorize` the toolchain,
-        * Github Server: `https://github.com`,
-        * Repository Type: `Existing`,
-        * Source repository URL: here you can choose to use the IBM repo `https://github.com/IBM/guestbook` or a fork of the IBM repo to your personal account, i.e. `https://github.com/<username>/guestbook`. If you use the fork you will have admin access and this lets you use the Issues support. If you use the public IBM repo you cannot use Issues support in your toolchain. 
-        * If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo,
-        * If you choose the public IBM repo instead:
-          * Uncheck `Enable GitHub Issues`,
-          * Uncheck `Track deployment of code changes`, 
-    * Click `Create` button,
-    * You will be taken to the next step: the Delivery Pipeline,
+It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
+
+To configure your `Toolchain`   ,
+
+1. Rename the Toolchain to `toolchain-kube-guestbook-<timestamp>`. Keep the existing timestamp of the original toolchain name.
+
+2. Change the `Region` to `Dallas` or your preferred region.
+
+> Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
+
+3. Change the `resource group` to `Default` or your preferred resource group.
+
+4. Select `GitHub` as the source provider. This will reload the page with a Github configuration section.
+
+5. Enter `GitHub (https://github.com)` in the `Github Server` field.
+
+6. Select `Existing` as the Repository Type.
+
+7. Enter `https://github.com/IBM/guestbook` as the `Repository URL`. 
+
+> Note: If you forked the repo while preparing the lab environment, you can also use the URL of your forked repo in your personal Github account, i.e. `https://github.com/<username>/guestbook`. 
+
+> Note: If you use the forked repo, you will have admin access and this lets you have the `Issues` support. If you use the public IBM repo, you don't have `Issues` support in your toolchain. 
+
+> Note: If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo.
+
+8. If you choose to use the public IBM repo `https://github.com/IBM/guestbook`, 
+    * Uncheck `Enable GitHub Issues`.
+    * Uncheck `Track deployment of code changes`.
+
+9. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
+
 
 ## Configure the `Delivery Pipeline`:
-    
-    * Define the following settings:
-        * App name: `guestbook-<username>-<timestamp>`,
-        * IBM Cloud API Key:
-            * If you have an existing IBM Cloud API Key, copy-paste the API Key,
-            * If you do not have an existing IBM Cloud API Key,
-                * Click the `Create` button to generate a new one,
-                * Or go to `Manage` > `Access (IAM)` > `IBM Cloud API Keys` to create a new IBM Cloud API Key,
-                * copy-paste the API Key,
-                * Click the Create button to confirm,
-                * This should trigger the validation of the API Key, and if validated, should autoload values for `Container registry region`, `Container registry namespace`,
-                * Change the 'Container registry namespace' to the generated name for the 'App name' in the same page, but remove enough numbers from the timestamp to validate the name,
-                    * This `Container registry namespace` must be unique for us.icr.io, you can also use the timestamp from above,
-                * Change the following settings to match your region, resource group, and IKS Cluster Name settings that were assigned to you:
-                  * `Cluster region`, e.g. wdc04 or dal10 (check) 
-                  * `Resource Group`, e.g. 'workshop-nov2019'
-                  * `Cluster name` make sure to select the correct cluster, 
-                  * Set `guestbook-ns` for `Cluster namespace`,
-    * Click the `Create` button,
 
-		![DevOps Create CD](../images/devops_create_cd.png)
+It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
 
-    * The Toolchain is being configured,
-    * When the Toolchain has successfully been configured, you will see the Tools in the Toolchain: THINK (if you selected Issues Management), CODE, DELIVER, and Eclipse Orion Web IDE,
-    * Click the top right drop down of the `kube-toolchain-123456...` and select `Rename`,
-    * Rename the toolchain name to `toolchain-kube-guestbook-<timestamp>`,
-    * In the DELIVER tool window, click the top right dropdown and select `Configure`,
+To configure the `Delivery Pipeline` in your `Toolchain`,
 
-		![DevOps Create Delivery Pipeline](../images/devops_create_delivery_pipeline.png)
+1. Rename `App name` to `guestbook-<username>-<timestamp>`.
 
-    * Change the `Pipeline name` to `pipeline-kube-guestbook-<timestamp>`,
-    * Click `Save Integration`,
-    * Go back to the `Overview` page,
+2. Click the `New` button in the `IBM Cloud API key` section to generate a new API key.
 
-		![DevOps Toolchain Overview](../images/devops_toolchain_overview.png)
+> Note: If you have an existing IBM Cloud API Key, you can reuse it by copy-paste the API Key.
+
+3. Click OK when prompted.
+
+4. This autoloads values for `Container registry region`, `Container registry namespace`.
+
+5. Review the `Container registry region`.
+
+6. Change the `Container registry namespace` to the one that you created earlier. 
+
+> Note, The `Container registry namespace` must be unique for us.icr.io, you can also use the timestamp if necessary.
+
+7. Review the `Cluster region`. It is typically `Dallas` or `Washington DC`. But, it deponds on your Kubernetes cluster location.
+
+8. The `Resource Group` should be set to 'Default` unless your instructors provide different instructions.
+
+9. Select the correct `Cluster name`.
+
+10. Set `Cluster namespace` to `default` unless your instructors provide different instructions.
+
+11. Click the `Create` button. The Toolchain and its compoenents are being configured.
+
+	![DevOps Create CD](../images/devops_create_cd.png)
+
+12. After the Toolchain configuration is successfully completed, you will see the `Tools` in the `Toolchain`: 
+    * THINK (only available if you chose to use your forked repo and selected Issues Management)
+    * CODE
+    * DELIVER
+    * Eclipse Orion Web IDE
+
+    ![DevOps Done Create CD](../images/devops_done_created_toolchain.png)
+
+13. In the `DELIVER` tile, click the top right dropdown(3 vertical dots) and select `Configure`. This bring you to the `Delivery Pipeline` window.
+
+	![DevOps Create Delivery Pipeline](../images/devops_create_delivery_pipeline.png)
+
+14. Rename the `Pipeline name` to `pipeline-kube-guestbook-<timestamp>`.
+
+15. Click `Save Integration`. This bring you back to the `Overview` page.
+
 
 ## Review and Debug the Toolchain Configuration,
     * The `CODE` window should link to your source code repository,
