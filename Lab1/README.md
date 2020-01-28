@@ -201,7 +201,7 @@ You run and debug the `Toolchain` in the section.
     ![K8s dashboard 01](../images/k8s-dashboard.png)
 
 
-## Connect to your cluster via CLI
+## Verify your deployment to Kubernetes Cluster via CLI
 
 You cab also verify successful deployment of CI/CD pipeline via Kubernetes CLI.
 
@@ -232,4 +232,4 @@ You cab also verify successful deployment of CI/CD pipeline via Kubernetes CLI.
     ```
 
 
-    
+    s
