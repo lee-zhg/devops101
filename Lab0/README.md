@@ -20,6 +20,21 @@ Complete the steps below to setup the lab environment.
 	$ ibmcloud target --cf
 	```
 
+1. Configure your Kubernetes client using this command. This will also configure your Kubernetes client for future login sessions by adding the command into your .bash_profile. Your cluster name should be provided by the instructors.
+
+    ```sh
+    eval $(ibmcloud ks cluster-config --cluster <k8s-cluster-name> --export | tee -a ~/.bash_profile) 
+    ```
+
+    > Note: If the command has a syntax error in your terminal (e.g. windows cmd shell), you may instead run the command `ibmcloud ks cluster-config --cluster <k8s-cluster-name>`. Then, copy the output and execute it in the same terminal.
+
+6. You should be able to use kubectl to list kubernetes resources. Try getting the list of pods (there should be none yet)
+
+    ```sh
+    kubectl get pods
+    No resources found.
+    ```
+
 ## Fork the Guestbook App in Github
 
 Optionally, fork the Guestbook App in Github.
