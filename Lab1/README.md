@@ -1,26 +1,27 @@
 # Toolchain 1 - Deploy a Kubernetes App
 
-In many of the naming, you need a name globally unique on the IBM Cloud. IBM Cloud will generate a default name with a timestamp part that you can re-use, but if you want or need your own, create a timestamp from bash commandline with `$ date +%s`,
+In this lab, you are going to create a toolchain and automate the deployment of a sample application to Kubernetes cluster in IBM Cloud.
 
-	```console
-	$ date +%s
-	1571778717
-	```
+## Create a Toolchain
 
-1. Create a Toolchain,
-    * Login to your IBM Cloud account,
-    * Go to https://cloud.ibm.com/devops/toolchains
-    * Click the `Create a Toolchain`,
+1. Login to your IBM Cloud account at https://cloud.ibm.com.
+
+1. Navigate to https://cloud.ibm.com/devops/toolchains.
+
+1. Click the `Create a Toolchain`,
 
 		![DevOps Create Toolchain](../images/devops_create_toolchain.png)
 
-    * Select the `Develop a Kubernetes app` template,
+1. Select the `Develop a Kubernetes app` template,
 
 		![DevOps Select Template](../images/devops_select_template.png)
     
-	* This will start the create toolchain process,
+1. This starts the create toolchain process.    
 
-2. Configure the Toolchain, preserve the unique timestamp part where possible, and configure for:
+        ![DevOps Created Toolchain](../devops_created_toolchain.png)
+
+
+## Configure the Toolchain, preserve the unique timestamp part where possible, and configure for:
 
     * Toolchain Name: `toolchain-kube-guestbook-<timestamp>`
         * Use the existing appended timestamp of the generated name,
@@ -40,7 +41,7 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
     * Click `Create` button,
     * You will be taken to the next step: the Delivery Pipeline,
 
-3. Configure the `Delivery Pipeline`:
+## Configure the `Delivery Pipeline`:
     
     * Define the following settings:
         * App name: `guestbook-<username>-<timestamp>`,
@@ -77,7 +78,7 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
 
 		![DevOps Toolchain Overview](../images/devops_toolchain_overview.png)
 
-4. Review and Debug the Toolchain Configuration,
+## Review and Debug the Toolchain Configuration,
     * The `CODE` window should link to your source code repository,
     * The `Eclipse Orion Web IDE` should link to an online Eclipse code editor,
     * Click the `DELIVER` window to review the `Delivery Pipeline`,
@@ -125,16 +126,16 @@ In many of the naming, you need a name globally unique on the IBM Cloud. IBM Clo
             * If the stage failed, review the `View logs and history` link to debug the stage,
             * Your deployment to Kubernetes of the deployment resource should succeed and the health check should pass successfully,
         
-5. Check your Kubernetes cluster, in the `guestbook-ns` namespace, you should see your deployment running, 
+## Check your Kubernetes cluster, in the `guestbook-ns` namespace, you should see your deployment running, 
 
-6. Login to IBM Cloud
+## Login to IBM Cloud
 
 	```console
 	$ ibmcloud login -u $IBM_USERID -p $IBM_PASSWORD -r $REGION -g $IBM_RG -c $ACCOUNTID
 	$ ibmcloud target --cf-api $IBM_CFAPI
 	```
 
-7. Connect to your cluster
+## Connect to your cluster
 
 	```console
 	$ ibmcloud ks cluster config --cluster $CLUSTER_NAME
