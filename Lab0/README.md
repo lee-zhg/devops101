@@ -1,4 +1,4 @@
-# Lab0 - Setup
+# Toolchain Lab 0 - Setup
 
 Complete the steps below to setup the lab environment.
 
@@ -40,6 +40,6 @@ In the lab, you can keep and re-use the generated timestamp, or you can create a
 
 	```console
 	$ date +%s
-	
+
 	1571778717
 	```
