@@ -1,4 +1,4 @@
-# Toolchain Lab 1 - Deploy a sample application to Kubernetes Kubernetes Cluster in IBM Cloud
+# Toolchain Lab 1 - Deploy a Sample Application to Kubernetes Kubernetes Cluster in IBM Cloud
 
 In this lab, you are going to create a toolchain and automate the deployment of a sample application to Kubernetes cluster in IBM Cloud.
 
