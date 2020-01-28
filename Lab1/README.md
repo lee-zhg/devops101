@@ -4,21 +4,21 @@ In this lab, you are going to create a toolchain and automate the deployment of 
 
 ## Create a Toolchain
 
-1. Login to your IBM Cloud account at https://cloud.ibm.com.
+1. Login to your IBM Cloud account at https://cloud.ibm.com
 
-1. Navigate to https://cloud.ibm.com/devops/toolchains.
+1. Navigate to https://cloud.ibm.com/devops/toolchains
 
 1. Click the `Create a Toolchain`,
 
-		![DevOps Create Toolchain](../images/devops_create_toolchain.png)
-
+	![DevOps Create Toolchain](../images/devops_create_toolchain.png)
+    
 1. Select the `Develop a Kubernetes app` template,
 
-		![DevOps Select Template](../images/devops_select_template.png)
+	![DevOps Select Template](../images/devops_select_template.png)
     
 1. This starts the create toolchain process.    
 
-        ![DevOps Created Toolchain](../devops_created_toolchain.png)
+    ![DevOps Created Toolchain](../devops_created_toolchain.png)
 
 
 ## Configure the Toolchain, preserve the unique timestamp part where possible, and configure for:
