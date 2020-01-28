@@ -10,7 +10,7 @@ In this lab, you are going to create a toolchain and automate the deployment of 
 
 1. Click the `Create a Toolchain`,
 
-	![DevOps Create Toolchain](../images/devops_create_toolchain.png)
+	![DevOps Create Toolchain](../  images/devops_create_toolchain.png)
     
 1. Select the `Develop a Kubernetes app` template,
 
@@ -18,7 +18,7 @@ In this lab, you are going to create a toolchain and automate the deployment of 
     
 1. This starts the create toolchain process.    
 
-    ![DevOps Created Toolchain](../devops_created_toolchain.png)
+    ![DevOps Created Toolchain](../images/devops_created_toolchain.png)
 
 
 ## Configure the Toolchain, preserve the unique timestamp part where possible, and configure for:
