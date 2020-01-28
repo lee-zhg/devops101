@@ -59,7 +59,7 @@ To configure your `Toolchain`   ,
 9. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
 
 
-## Configure the `Delivery Pipeline`
+## Configure the Delivery Pipeline
 
 It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
 
@@ -110,9 +110,9 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 15. Click `Save Integration`. This bring you back to the `Overview` page.
 
 
-## Review and Debug the Toolchain
+## Run and Debug the Toolchain
 
-You review and debug the `Toolchain` in the section.
+You run and debug the `Toolchain` in the section.
 
 1. The `CODE` tile links to your source code repository.
 
@@ -125,9 +125,11 @@ You review and debug the `Toolchain` in the section.
 5. Click the `View logs and history` link of the `JOBS` section to view detail information.
     * The `BUILD` stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)
 
-6. Return to the `pipeline-kube-guestbook`.
+6. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
 7. The `CONTAINERIZE` stage failed. It's the next stage after `BUILD`.
+
+    ![DevOps Create Delivery Pipeline](../images/containerize-failed.png)
 
 8. Click the `View logs and history` link in the `JOBS` section.
 
@@ -135,7 +137,7 @@ You review and debug the `Toolchain` in the section.
 
 > Note: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
 
-10. Return to the `pipeline-kube-guestbook`.
+10. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
 11. Within the `CONTAINERIZE` tile, from the settings drop down, select the `Configure Stage`.
 
