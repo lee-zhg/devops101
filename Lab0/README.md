@@ -31,3 +31,15 @@ Optionally, fork the Guestbook App in Github.
 1. Fork the repo by clicking on the `Fork` button at the top-right of your screen.
 
 1. Make a note of your new Git repo link. You may use the link to your personal fork in the Lab.s
+
+## Unique Name of IBM Cloud Services
+
+For most of services, you need a name globally unique in the IBM Cloud. IBM Cloud may generate a default name including a timestamp part. 
+
+In the lab, you can keep and re-use the generated timestamp, or you can create a new timestamp from bash commandline with `$ date +%s`,
+
+	```console
+	$ date +%s
+	
+	1571778717
+	```
