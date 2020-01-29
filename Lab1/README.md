@@ -77,7 +77,11 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 
 5. Review the `Container registry region`.
 
-6. Change the `Container registry namespace` to the one that you created earlier. 
+6. Change the `Container registry namespace` to the one that you created earlier. The command below should retrieve your registry name space.
+
+    ```
+    echo $CRNAMESPACE
+    ```
 
 > Note, The `Container registry namespace` must be unique for us.icr.io, you can also use the timestamp if necessary.
 
