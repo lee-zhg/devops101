@@ -35,6 +35,24 @@ Complete the steps below to setup the lab environment.
     No resources found.
     ```
 
+7. Login to the registry service
+
+    ```sh
+    ibmcloud cr login
+    ```
+
+8. Add a new `name space` in registry to store your docker image
+
+	```
+	ibmcloud  cr  namespace-add  clink_[your initial]
+	export CRNAMESPACE=clink_[your initial]
+	```
+
+> Note: the new name space clink_[your initial] must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
+
+> Note: Make a note of your new name space. Its name will be used later.
+
+
 ## Fork the Guestbook App in Github
 
 Optionally, fork the Guestbook App in Github.
