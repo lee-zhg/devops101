@@ -95,15 +95,15 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 
 10. Set `Cluster namespace` to `default` unless your instructors provide different instructions.
 
-11. Click the `Create` button. The Toolchain and its compoenents are being configured.
-
 	![DevOps Create CD](../images/devops_create_cd.png)
 
+11. Click the `Create` button. The Toolchain and its compoenents are being configured.
+
 12. After the Toolchain configuration is successfully completed, you will see the `Tools` in the `Toolchain`: 
-    * THINK (only available if you chose to use your forked repo and selected Issues Management)
-    * CODE
-    * DELIVER
-    * Eclipse Orion Web IDE
+    * `THINK (only available if you chose to use your forked repo and selected `Issues Management`)
+    * `CODE`
+    * `DELIVER`
+    * `Eclipse Orion Web IDE`
 
     ![DevOps Done Create CD](../images/devops_done_created_toolchain.png)
 
@@ -120,11 +120,13 @@ To configure the `Delivery Pipeline` in your `Toolchain`,
 
 You run and debug the `Toolchain` in the section.
 
-1. The `CODE` tile links to your source code repository.
+1. The `CODE` tile links to your source code repository at github.com.
 
 2. The `Eclipse Orion Web IDE` tile links to an online Eclipse code editor.
 
-3. Click the `DELIVER` window to review the `Delivery Pipeline`.
+3. Click the `DELIVER` tile to review the `Delivery Pipeline` window.
+
+	![DevOps Execute Delivery Pipeline](../images/devops_run_delivery_pipeline.png)
 
 4. Click the `play` icon within the `BUILD` tile to kick off the build process. You can observe the building progress within the `BUILD` tile. Detail information is available in the `JOBS` section.  
 
