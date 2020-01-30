@@ -124,11 +124,11 @@ You run and debug the `Toolchain` in the section.
 
 2. The `Eclipse Orion Web IDE` tile links to an online Eclipse code editor.
 
-3. Click the `DELIVER` tile to review the `Delivery Pipeline` window.
+3. Click the `DELIVER` tile to navigate to the `Delivery Pipeline` window.
 
 	![DevOps Execute Delivery Pipeline](../images/devops_run_delivery_pipeline.png)
 
-4. Click the `play` icon within the `BUILD` tile to kick off the build process. You can observe the building progress within the `BUILD` tile. Detail information is available in the `JOBS` section.  
+4. Click the `play` icon within the `BUILD` tile to kick off the build process. You can observe the building progress within the `JOBS` section of the `BUILD` tile. 
 
 5. Click the `View logs and history` link of the `JOBS` section to view detail information.
     * The `BUILD` stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)
@@ -139,15 +139,34 @@ You run and debug the `Toolchain` in the section.
 
     ![DevOps Create Delivery Pipeline](../images/containerize-failed.png)
 
-8. Click the `View logs and history` link in the `JOBS` section.
+8. Click the `View logs and history` link in the `JOBS` section of the `CONTAINERIZE` tile.
 
 9. Review the build logs, and note that the `Dockerfile` was not found.
 
-> Error Message: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
+    ```
+    Preparing to start the job...
+    Pipeline image: latest
+    Preparing the build artifacts...
+    Pulling pipeline base image latest ...
+    DOCKER_ROOT=.
+    DOCKER_FILE=Dockerfile
+    build.properties:
+    GIT_URL=https://github.com/IBM/guestbook.git
+    GIT_BRANCH=master
+    GIT_COMMIT=5246a420041424130f32d292cca7fc7a99aa0b93
+    SOURCE_BUILD_NUMBER=2
+    ==========================================================
+    Checking for Dockerfile at the repository root
+    Dockerfile not found at: Dockerfile
+
+    Finished: FAILED
+    ```
+
+    > Note: The Dockerfile for the guestbook application is located in the `v1/guestbook` and `v2/guestbook` subdirectories, so the reference needs to be set to include the relative path.
 
 10. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
-11. Within the `CONTAINERIZE` tile, from the `settings` drop down, select the `Configure Stage`.
+11. Within the `CONTAINERIZE` tile, click the `settings` icon on the top-right and select the `Configure Stage`.
 
 12. In the `Jobs` tab, note there are 4 jobs belonging to the stage, each job corresponds to a step in the `Build logs`.
 
@@ -180,7 +199,7 @@ You run and debug the `Toolchain` in the section.
 
     ![DevOps Containerize Succeed](../images/containerize-succeed.png)
 
-21. After the `CONTAINERIZE` stage to completes, navigate to IKS dashboard https://cloud.ibm.com/kubernetes/clusters in a different browser tab.
+21. After the `CONTAINERIZE` stage completes, navigate to IKS dashboard https://cloud.ibm.com/kubernetes/clusters in a different browser tab.
 
 22.  Select the `Registry` tab on the left.
 
@@ -192,7 +211,7 @@ You run and debug the `Toolchain` in the section.
         
 25. Return to the `pipeline-kube-guestbook-XXXXXX`.
 
-26. Review the `DEPLOY` stage, you should see that the stage passed successfully.
+26. Review the `DEPLOY` stage, you should see that the stage passed successfully. If it's still running (in blue color), pause the lab until it completes.
 
     ![DevOps Deploy Succeed](../images/deploy-succeed.png)
 
@@ -201,6 +220,8 @@ You run and debug the `Toolchain` in the section.
 27. Navigate to IKS dashboard https://cloud.ibm.com/kubernetes/clusters in a new browser tab.
 
 28. Select your Kubernetes cluster this time.
+
+    ![IKS dashboard 02](../images/iks-dashboard02.png)
 
 29. Click the `Kubernetes dashboard` button on the top.
 
