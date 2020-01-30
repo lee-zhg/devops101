@@ -63,7 +63,7 @@ To configure your `Toolchain`   ,
 
 ## Configure the Delivery Pipeline
 
-It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
+The name of toolchain and its components includes a timestamp. It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
 
 To configure the `Delivery Pipeline` in your `Toolchain`,
 
