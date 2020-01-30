@@ -5,7 +5,7 @@ In this lab, you are going to create a toolchain and automate the deployment of 
 
 ## Create a Toolchain
 
-To complete a `Toolchain` in IBM Cloud environment,
+To create a `Toolchain` in IBM Cloud environment,
 
 1. Login to your IBM Cloud account at https://cloud.ibm.com
 
@@ -26,7 +26,7 @@ To complete a `Toolchain` in IBM Cloud environment,
 
 ## Configure the Toolchain
 
-It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
+The name of toolchain and its components includes a timestamp. It's recommend to preserve the unique timestamp part of service names where possible while configuring the toolchain.
 
 To configure your `Toolchain`   ,
 
@@ -38,7 +38,7 @@ To configure your `Toolchain`   ,
 
 3. Change the `resource group` to `Default` or your preferred resource group.
 
-4. Select `GitHub` as the source provider. This will reload the page with a Github configuration section.
+4. Select `GitHub` as the source provider. This will reload the page with a Github configuration selection.
 
 5. Enter `GitHub (https://github.com)` in the `Github Server` field.
 
@@ -55,6 +55,8 @@ To configure your `Toolchain`   ,
 8. If you choose to use the public IBM repo `https://github.com/IBM/guestbook`, 
     * Uncheck `Enable GitHub Issues`.
     * Uncheck `Track deployment of code changes`.
+
+    ![DevOps Configure Toolchain](../images/config-toolchain.png)
 
 9. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
 
