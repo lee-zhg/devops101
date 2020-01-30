@@ -69,7 +69,7 @@ Optionally, fork the Guestbook App in Github.
 
 For most of services, you need a name globally unique in the IBM Cloud. IBM Cloud may generate a default name including a timestamp part. 
 
-In the lab, you can keep and re-use the generated timestamp, or you can create a new timestamp from bash commandline with `$ date +%s`,
+In the lab, you can keep and re-use the generated timestamp, or optiopnally you can create a new timestamp from bash commandline with `$ date +%s`,
 
 	```console
 	$ date +%s
