@@ -23,7 +23,7 @@ Complete the steps below to setup the lab environment.
 1. Configure your Kubernetes client using this command. This will also configure your Kubernetes client for future login sessions by adding the command into your .bash_profile. Your cluster name should be provided by the instructors.
 
     ```sh
-    eval $(ibmcloud ks cluster-config --cluster <k8s-cluster-name> --export | tee -a ~/.bash_profile) 
+    $ eval $(ibmcloud ks cluster-config --cluster <k8s-cluster-name> --export | tee -a ~/.bash_profile) 
     ```
 
     > Note: If the command has a syntax error in your terminal (e.g. windows cmd shell), you may instead run the command `ibmcloud ks cluster-config --cluster <k8s-cluster-name>`. Then, copy the output and execute it in the same terminal.
@@ -31,21 +31,23 @@ Complete the steps below to setup the lab environment.
 6. You should be able to use kubectl to list kubernetes resources. Try getting the list of pods (there should be none yet)
 
     ```sh
-    kubectl get pods
+    $ kubectl get pods
+
     No resources found.
     ```
 
 7. Login to the registry service
 
     ```sh
-    ibmcloud cr login
+    $ ibmcloud cr login
     ```
 
 8. Add a new `name space` in registry to store your docker image
 
 	```
-	ibmcloud  cr  namespace-add  clink_[your initial]
-	export CRNAMESPACE=clink_[your initial]
+	$ ibmcloud  cr  namespace-add  clink_[your initial]
+
+	$ export CRNAMESPACE=clink_[your initial]
 	```
 
 > Note: the new name space clink_[your initial] must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
