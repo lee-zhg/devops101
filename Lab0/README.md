@@ -11,7 +11,7 @@ Complete the steps below to setup the lab environment.
 1. Login to your IBM Cloud account. Enter your IBM Cloud account username and password when prompted.
 
     ```console
-    $ ibmcloud logins
+    $ ibmcloud login
     ```
 
 1.  Set `CF API endpoint`, `Org` and `Space`. If there are multiple choices, you'll be prompted.
