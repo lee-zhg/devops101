@@ -1,80 +1,21 @@
-# DevOps Lab 0 - Setup
+# DevOps 101
 
-Complete the steps below to setup the lab environment.
+The objective of the `DevOps 101` is to explain how you can create a CI/CD Pipeline on IBM Cloud in order to automate full life cycle management of your application.
 
-## Access the IBM Cloud via CLI
+`IBM Cloud Continuous Delivery` service includes toolchains that support development, deployment and operations tasks to manage your CI/CD.
 
-1. Login to your web terminal. Lab instructors should provide the access information.
+The accronym CI/CD stands for Continuous Integration and Continuous Delivery. Continuous Integration (CI) stands for the practice of developers merging their work into a shared main branch, validating the merger by creating a automatic build and automatic testing against the build. Continuous Delivery (CD) adds an automated release process to deploy an application.
 
-	> Note: if you are doing the lab in a non-workshop environment, you may perform the steps in a command window or terminal. Pre-requisite CLIs are required to be installed locally.
+See: https://cloud.ibm.com/devops/getting-started
 
-1. Login to your IBM Cloud account. Enter your IBM Cloud account username and password when prompted.
+## Toolchain Pipelines
 
-    ```console
-    $ ibmcloud login -r us-south -g Default
-    ```
+![extended pipeline](images/ibmcloud-devops-extended-toolchain.png)
 
-1.  Set CF API endpoint, Org and Space. If there are multiple choices, you'll be prompted.
+## Labs
 
-	```console
-	$ ibmcloud target --cf
-	```
-
-1. Configure your Kubernetes client using this command. This will also configure your Kubernetes client for future login sessions by adding the command into your .bash_profile. Your cluster name should be provided by the instructors.
-
-    ```sh
-    $ eval $(ibmcloud ks cluster-config --cluster <k8s-cluster-name> --export | tee -a ~/.bash_profile) 
-    ```
-
-    > Note: If the command has a syntax error in your terminal (e.g. windows cmd shell), you may instead run the command `ibmcloud ks cluster-config --cluster <k8s-cluster-name>`. Then, copy the output and execute it in the same terminal.
-
-6. You should be able to use kubectl to list kubernetes resources. Try getting the list of pods (there should be none yet)
-
-    ```sh
-    $ kubectl get pods
-
-    No resources found.
-    ```
-
-7. Login to the registry service
-
-    ```sh
-    $ ibmcloud cr login
-    ```
-
-8. Add a new `name space` in registry to store your docker image
-
-	```
-	$ ibmcloud  cr  namespace-add  clink_[your initial]
-
-	$ export CRNAMESPACE=clink_[your initial]
-	```
-
-> Note: the new name space clink_[your initial] must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
-
-> Note: Make a note of your new name space. Its name will be used later.
+1. Lab0, Setup and Pre-requisites, see [Lab0](Lab0/README.md),
+2. Lab1, Create a Toolchain to Deploy a sample application to Kubernetes Cluster, see [Lab1](Lab1/README.md),
 
 
-## Fork the Guestbook App in Github
 
-Optionally, fork the Guestbook App in Github.
-
-1. Login to https://github.com. You would need a GitHub account.
-
-1. Go to https://github.com/IBM/guestbook in the same browser.
-
-1. Fork the repo by clicking on the `Fork` button at the top-right of your screen.
-
-1. Make a note of your new Git repo link. You may use the link to your personal fork in the Lab.s
-
-## Unique Name of IBM Cloud Services
-
-For most of services, you need a name globally unique in the IBM Cloud. IBM Cloud may generate a default name including a timestamp part. 
-
-In the lab, you can keep and re-use the generated timestamp, or optiopnally you can create a new timestamp from bash commandline with `$ date +%s`,
-
-	```console
-	$ date +%s
-
-	1571778717
-	```
