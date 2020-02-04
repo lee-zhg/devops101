@@ -11,14 +11,20 @@ Complete the steps below to setup the lab environment.
 1. Login to your IBM Cloud account. Enter your IBM Cloud account username and password when prompted.
 
     ```console
-    $ ibmcloud login -r us-south -g Default
+    $ ibmcloud login -r us-east -g Feb2020Workshop
     ```
 
-1.  Set CF API endpoint, Org and Space. If there are multiple choices, you'll be prompted.
+1.  Set `CF API endpoint`, `Org` and `Space`. If there are multiple choices, you'll be prompted.
 
 	```console
-	$ ibmcloud target --cf
+	$ ibmcloud target --cf 
 	```
+
+1. Set `Region` and `Resource Group`.
+
+    ```
+    $ ibmcloud target -r us-east -g Feb2020Workshop
+    ```
 
 1. Configure your Kubernetes client using this command. This will also configure your Kubernetes client for future login sessions by adding the command into your .bash_profile. Your cluster name should be provided by the instructors.
 
