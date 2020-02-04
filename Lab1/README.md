@@ -32,33 +32,35 @@ To configure your `Toolchain`   ,
 
 1. Rename the Toolchain to `toolchain-kube-guestbook-<timestamp>`. Keep the existing timestamp of the original toolchain name.
 
-2. Change the `Region` to `Dallas` or your preferred region.
+1. Change the `Region` to `Washington DC` or your preferred region.
 
-> Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
+    > Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
 
-3. Change the `resource group` to `Default` or your preferred resource group.
+1. Change the `resource group` to `Feb2020Workshop` or your preferred resource group.
 
-4. Select `GitHub` as the source provider. This will reload the page with a Github configuration selection.
+1. Select `GitHub` as the source provider. This will reload the page with a Github configuration selection.
 
-5. Enter `GitHub (https://github.com)` in the `Github Server` field.
+1. Click `Authorize` to login to `GitHub`.
 
-6. Select `Existing` as the Repository Type.
+1. Enter `GitHub (https://github.com)` in the `Github Server` field.
 
-7. Enter `https://github.com/IBM/guestbook` as the `Repository URL`. 
+1. Select `Existing` as the Repository Type.
 
-> Note: If you forked the repo while preparing the lab environment, you can also use the URL of your forked repo in your personal Github account, i.e. `https://github.com/<username>/guestbook`. 
+1. Enter `https://github.com/IBM/guestbook` as the `Repository URL`. 
 
-> Note: If you use the forked repo, you will have admin access and this lets you have the `Issues` support. If you use the public IBM repo, you don't have `Issues` support in your toolchain. 
+    > Note: If you forked the repo while preparing the lab environment, you can also use the URL of your forked repo in your personal Github account, i.e. `https://github.com/<username>/guestbook`. 
 
-> Note: If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo.
+    > Note: If you use the forked repo, you will have admin access and this lets you have the `Issues` support. If you use the public IBM repo, you don't have `Issues` support in your toolchain. 
 
-8. If you choose to use the public IBM repo `https://github.com/IBM/guestbook`, 
+    > Note: If you choose your personal Github account, you should be able to select the drop down and scroll to find your fork of the `guestbook` repo.
+
+1. If you choose to use the public IBM repo `https://github.com/IBM/guestbook`, 
     * Uncheck `Enable GitHub Issues`.
     * Uncheck `Track deployment of code changes`.
 
     ![DevOps Configure Toolchain](../images/config-toolchain.png)
 
-9. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
+1. Click `Create` button. You will be taken to the next step: the Delivery Pipeline,
 
 
 ## Configure the Delivery Pipeline
