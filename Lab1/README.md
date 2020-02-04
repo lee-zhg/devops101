@@ -32,7 +32,7 @@ To configure your `Toolchain`   ,
 
 1. Rename the Toolchain to `toolchain-kube-guestbook-<timestamp>`. Keep the existing timestamp of the original toolchain name.
 
-1. Change the `Region` to `Washington DC` or your preferred region.
+1. Change the `Region` to `Dallas` or your preferred region.
 
     > Note: if you have an existing `Continuous Delivery` service, make sure that the region matches with the region of your `Continuous Delivery` service,
 
